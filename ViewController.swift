@@ -8,8 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController, FBLoginViewDelegate {
+class ViewController: UIViewController, FBLoginViewDelegate, UITableViewController{
+    
+    var list = [MyTable]()
+    
     @IBOutlet var fbLoginView : FBLoginView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,9 +25,11 @@ class ViewController: UIViewController, FBLoginViewDelegate {
         swipeRight.direction = UISwipeGestureRecognizerDirection.Right
         self.view.addGestureRecognizer(swipeRight)
         
-        var swipeLeft = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
-        swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
-        self.view.addGestureRecognizer(swipeLeft)
+        var swipeDown = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.Down
+        self.view.addGestureRecognizer(swipeDown)
+        
+        self.list = [MyTable(name: "Jargon"),MyTable(name:"Word2"), MyTable(name:"Word3"), MyTable(name:"Word4")]
     }
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         
@@ -38,6 +45,8 @@ class ViewController: UIViewController, FBLoginViewDelegate {
             }
         }
     }
+    
+
 
     @IBOutlet weak var usernameLabel: UILabel!
     override func didReceiveMemoryWarning() {
@@ -79,6 +88,5 @@ class ViewController: UIViewController, FBLoginViewDelegate {
         
         self.performSegueWithIdentifier("goto_login", sender: self)
     }
-
 }
 

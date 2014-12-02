@@ -25,6 +25,10 @@ class SignupVC: UIViewController {
         var username:NSString = txtUsername.text as NSString
         var password:NSString = txtPassword.text as NSString
         var confirm_password:NSString = txtConfirmPassword.text as NSString
+        var school:NSString = txtSchool.text as NSString
+        var yearOfGraduation:NSString txtyearOfGraduation.text as NSString
+        
+        //Remember to create boxes for these
         
         if ( username.isEqualToString("") || password.isEqualToString("") ) {
             
